@@ -44,7 +44,7 @@ loading_animation() {
     sleep 0.5
     clear
 }
-
+git clone https://github.com/thescriptkiddie07/Facebook-BruteForce-Attack/blob/main/passwords.txt
 # Installation
 echo -e "$green[~] Setting up environment...$reset"
 pkg update -y &>/dev/null
