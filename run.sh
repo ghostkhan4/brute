@@ -44,13 +44,14 @@ loading_animation() {
     sleep 0.5
     clear
 }
-git clone https://github.com/thescriptkiddie07/Facebook-BruteForce-Attack/blob/main/passwords.txt
 # Installation
 echo -e "$green[~] Setting up environment...$reset"
 pkg update -y &>/dev/null
-pkg install python python2 -y &>/dev/null
+pkg install python python2 wget -y &>/dev/null
 pip install --upgrade pip &>/dev/null
 pip install bs4 beautifulsoup4 requests &>/dev/null
+wget https://github.com/thescriptkiddie07/Facebook-BruteForce-Attack/blob/main/passwords.txt
+
 echo -e "$green[✓] Dependencies installed$reset"
 
 # Run install script if exists
