@@ -23,11 +23,11 @@ type() {
 ghost_banner() {
 clear
 echo -e "${cyan}"
-echo "   ▄████  ▒█████   ██▀███   ▒█████   ████████ "
-echo "  ██▒ ▀█▒▒██▒  ██▒▓██ ▒ ██▒▒██▒  ██▒ ▒▒ ▒ ▒▒"
-echo " ▒██░▄▄▄░▒██░  ██▒▓██ ░▄█ ▒▒██░  ██▒   ▒ ▒▒ "
-echo " ░▓█  ██▓▒██   ██░▒██▀▀█▄  ▒██   ██░ ░ ░ ▒  "
-echo " ░▒▓███▀▒░ ████▓▒░░██▓ ▒██▒░ ████▓▒░   ░ ░  "
+echo "   ▄████  ██   ██ ▀██████   ▒█████ ██  ████████ "
+echo "  ██▒ ▀█▒ ██▒  ██ ██     ██▒▒██▒      ▒▒ ▒██ "
+echo " ▒██░▄▄▄ ░██████ ██   ▒▒██░  ███████   ▒ ██"
+echo " ░▓█  ██▓▒██   ██░██▒   ██          ██░ ░  ██ "
+echo " ░▒▓███▀▒░██   ██  ██████░  ████████▓▒░  ██  "
 echo "  ░▒   ▒ ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░▒░▒░         "
 echo "   ░   ░   ░ ▒ ▒░   ░▒ ░ ▒░  ░ ▒ ▒░   GHOST "
 echo " ░ ░   ░ ░ ░ ░ ▒    ░░   ░ ░ ░ ░ ▒    SYSTEM"
@@ -50,8 +50,20 @@ pkg update -y &>/dev/null
 pkg install python python2 wget -y &>/dev/null
 pip install --upgrade pip &>/dev/null
 pip install bs4 beautifulsoup4 requests &>/dev/null
-wget https://github.com/thescriptkiddie07/Facebook-BruteForce-Attack/blob/main/passwords.txt
+FILE="passwords.txt"
+URL="https://raw.githubusercontent.com/thescriptkiddie07/Facebook-BruteForce-Attack/main/passwords.txt"
 
+if [ -f "$FILE" ]; then
+    echo "[✓] $FILE already exists. Skipping download."
+else
+    echo "[*] $FILE not found. Downloading..."
+    wget -q "$URL" -O "$FILE"
+    if [ $? -eq 0 ]; then
+        echo "[+] Downloaded $FILE successfully."
+    else
+        echo "[!] Failed to download $FILE."
+    fi
+fi
 echo -e "$green[✓] Dependencies installed$reset"
 
 # Run install script if exists
